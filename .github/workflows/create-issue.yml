@@ -15,4 +15,8 @@ jobs:
         with:
           token: ${{ github.token }}
           title: Simple test issue
-          body: my new issue
+          body: |
+            ### Tasks
+            - [ ] 1st
+            - [ ] 2nd
+            - [ ] 3rd
