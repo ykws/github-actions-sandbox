@@ -13,10 +13,10 @@ jobs:
       - name: make message
         run: |
           echo 'MESSAGE<<EOF' >> $GITHUB_ENV
-          echo "```[tasklist]" >> $GITHUB_ENV
+          echo \`\`\`"[tasklist]" >> $GITHUB_ENV
           echo "### Tasks" >> $GITHUB_ENV
           echo "- [ ] 1st" >> $GITHUB_ENV
-          echo "```" >> $GITHUB_ENV
+          echo \`\`\` >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
       - name: create an issue
         uses: dacbd/create-issue-action@main
