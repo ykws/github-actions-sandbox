@@ -10,13 +10,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: make message
+        run: |
+          echo 'MESSAGE<<EOF' >> $GITHUB_ENV
+          echo "### Tasks" >> $GITHUB_ENV
+          echo 'EOF' >> $GITHUB_ENV
       - name: create an issue
         uses: dacbd/create-issue-action@main
         with:
           token: ${{ github.token }}
           title: Simple test issue
-          body: |
-            ### Tasks
-            - [ ] 1st
-            - [ ] 2nd
-            - [ ] 3rd
+          body: ${{ env.MESSAGE }}
