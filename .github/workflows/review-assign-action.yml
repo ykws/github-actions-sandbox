@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: hkusu/review-assign-action@v1
+      - uses: ykws/review-assign-action@v1
         with: 
           assignees: ${{ github.actor }}
           reviewers: ${{ vars.REVIEWERS }}
