@@ -18,4 +18,4 @@ jobs:
         iteration-field: Iteration
         iteration: last
         new-iteration: current
-        statuses: 'In Review'
+        statuses: 'In review'
