@@ -50,4 +50,4 @@ jobs:
 
             - [Work this week](https://github.com/users/ykws/projects/8/views/1)
           PINNED: false
-          CLOSE_PREVIOUS: false
+          CLOSE_PREVIOUS: true
