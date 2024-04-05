@@ -14,3 +14,5 @@ jobs:
           assignees: ${{ github.actor }}
           # reviewers は別途設定する
           # reviewers: ${{ vars.REVIEWERS }}
+          ready-comment: 'Ready for review :rocket:'
+          merged-comment: 'It was merged. Thanks for your review :wink: `<reviewers>`'
