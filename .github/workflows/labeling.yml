@@ -2,21 +2,35 @@ name: Labeling
 
 on:
   pull_request:
-    types: [ "opened" ]
 
 jobs:
-  assign:
+  labeling:
     runs-on: ubuntu-latest
-
+    env:
+      GH_REPO: ${{ github.repository }}
+      GH_TOKEN: ${{ github.token }}
     steps:
-      - uses: yumemi-inc/path-filter@v2
-        id: filter
+      - name: frontend
+        uses: yumemi-inc/path-filter@v2
         with:
           patterns: |
             **/*.js
             !server/**
-      - env:
-          GH_REPO: ${{ github.repository }}
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh pr edit ${{ github.event.number }} ${{ steps.filter.outputs.exists == 'true' && '--add-label' || '--remove-label' }} 'frontend'
+          run: |
+            gh pr edit ${{ github.event.number }} ${{ steps.filter.outputs.exists == 'true' && '--add-label' || '--remove-label' }} 'frontend'
+      - name: ios
+        uses: yumemi-inc/path-filter@v2
+        with:
+          patterns: |
+            **/*.swift
+            ios/**
+          run: |
+            gh pr edit ${{ github.event.number }} ${{ steps.filter.outputs.exists == 'true' && '--add-label' || '--remove-label' }} 'ios'
+      - name: android
+        uses: yumemi-inc/path-filter@v2
+        with:
+          patterns: |
+            **/*.kt
+            android/**
+          run: |
+            gh pr edit ${{ github.event.number }} ${{ steps.filter.outputs.exists == 'true' && '--add-label' || '--remove-label' }} 'android'
