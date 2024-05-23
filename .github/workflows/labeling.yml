@@ -1,4 +1,4 @@
-name: Review Assign
+name: Labeling
 
 on:
   pull_request:
