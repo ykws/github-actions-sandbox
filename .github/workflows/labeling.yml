@@ -1,0 +1,22 @@
+name: Review Assign
+
+on:
+  pull_request:
+    types: [ "opened" ]
+
+jobs:
+  assign:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: yumemi-inc/path-filter@v2
+        id: filter
+        with:
+          patterns: |
+            **/*.js
+            !server/**
+      - env:
+          GH_REPO: ${{ github.repository }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh pr edit ${{ github.event.number }} ${{ steps.filter.outputs.exists == 'true' && '--add-label' || '--remove-label' }} 'frontend'
