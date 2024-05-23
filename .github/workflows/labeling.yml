@@ -22,7 +22,6 @@ jobs:
         uses: yumemi-inc/path-filter@v2
         with:
           patterns: |
-            **/*.swift
             ios/**
           run: |
             gh pr edit ${{ github.event.number }} ${{ steps.filter.outputs.exists == 'true' && '--add-label' || '--remove-label' }} 'ios'
@@ -30,7 +29,6 @@ jobs:
         uses: yumemi-inc/path-filter@v2
         with:
           patterns: |
-            **/*.kt
             android/**
           run: |
             gh pr edit ${{ github.event.number }} ${{ steps.filter.outputs.exists == 'true' && '--add-label' || '--remove-label' }} 'android'
