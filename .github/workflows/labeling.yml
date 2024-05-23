@@ -16,19 +16,17 @@ jobs:
           patterns: |
             **/*.js
             !server/**
-          run: |
-            gh pr edit ${{ github.event.number }} ${{ steps.filter.outputs.exists == 'true' && '--add-label' || '--remove-label' }} 'frontend'
+          run: gh pr edit ${{ github.event.number }} --add-label 'frontend'
+          run-if-not: gh pr edit ${{ github.event.number }} --remove-label 'frontend'
       - name: ios
         uses: yumemi-inc/path-filter@v2
         with:
-          patterns: |
-            ios/**
-          run: |
-            gh pr edit ${{ github.event.number }} ${{ steps.filter.outputs.exists == 'true' && '--add-label' || '--remove-label' }} 'ios'
+          patterns: 'ios/**'
+          run: gh pr edit ${{ github.event.number }} --add-label 'ios'
+          run-if-not: gh pr edit ${{ github.event.number }} --remove-label 'ios'
       - name: android
         uses: yumemi-inc/path-filter@v2
         with:
-          patterns: |
-            android/**
-          run: |
-            gh pr edit ${{ github.event.number }} ${{ steps.filter.outputs.exists == 'true' && '--add-label' || '--remove-label' }} 'android'
+          patterns: 'android/**'
+          run: gh pr edit ${{ github.event.number }} --add-label 'android'
+          run-if-not: gh pr edit ${{ github.event.number }} --remove-label 'android'
