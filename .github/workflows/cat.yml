@@ -1,0 +1,17 @@
+name: Cat file
+
+on:
+  workflow_dispatch:
+
+jobs:
+  download:
+  
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          repository: ykws/ykws
+
+      - run: cat profile.yml
