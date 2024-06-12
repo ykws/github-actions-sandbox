@@ -21,12 +21,22 @@ jobs:
       - name: ios
         uses: yumemi-inc/path-filter@v2
         with:
-          patterns: 'ios/**'
+          patterns: 
+            ios/**
+            core/domain/**
           run: gh pr edit ${{ github.event.number }} --add-label 'ios'
           run-if-not: gh pr edit ${{ github.event.number }} --remove-label 'ios'
       - name: android
         uses: yumemi-inc/path-filter@v2
         with:
-          patterns: 'android/**'
+          patterns:
+            android/**
           run: gh pr edit ${{ github.event.number }} --add-label 'android'
           run-if-not: gh pr edit ${{ github.event.number }} --remove-label 'android'
+      - name: core
+        uses: yumemi-inc/path-filter@v2
+        with:
+          patterns: |
+            core/**
+          run: gh pr edit ${{ github.event.number }} --add-label 'core'
+          run-if-not: gh pr edit ${{ github.event.number }} --remove-label 'core'
