@@ -10,8 +10,9 @@ jobs:
 
     steps:
       - uses: hkusu/review-assign-action@v1
-        with: 
-          assignees: ${{ github.actor }}
+        with:
+          # assignees は別途設定を検証のため抑制
+          # assignees: ${{ github.actor }}
           # reviewers は別途設定する
           # reviewers: ${{ vars.REVIEWERS }}
           ready-comment: 'Ready for review :rocket:'
