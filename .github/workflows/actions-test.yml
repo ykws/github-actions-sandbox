@@ -1,0 +1,11 @@
+name: Actions Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  dry-run:
+    if: ${{ false }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: ""
