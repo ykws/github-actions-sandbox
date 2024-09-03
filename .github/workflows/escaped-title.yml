@@ -12,3 +12,10 @@ jobs:
 
       - name: Echo title
         run: echo ${{ github.event.pull_request.title }}
+
+      - name: Echo concat title
+        id: set_title
+        run: echo "title=${{ github.event.pull_request.title }}" >> $GITHUB_OUTPUT
+
+      - name: Echo env title
+        run: echo ${{ setps.set_title.title }}
