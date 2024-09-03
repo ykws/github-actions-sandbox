@@ -22,4 +22,4 @@ jobs:
           echo "title=$ESCAPED_PR_TITLE" >> $GITHUB_OUTPUT
 
       - name: Echo env title
-        run: echo ${{ steps.set_title.outputs.title }}
+        run: printf "%s\n" "${{ steps.set_title.outputs.title }}"
