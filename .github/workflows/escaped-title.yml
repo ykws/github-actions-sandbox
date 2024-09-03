@@ -13,9 +13,14 @@ jobs:
       - name: Echo title
         run: echo ${{ github.event.pull_request.title }}
 
-      - name: Echo concat title
+      - name: Set escaped title
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
         id: set_title
-        run: echo "title=${{ github.event.pull_request.title }}" >> $GITHUB_OUTPUT
+        run: |
+          ESCAPED_PR_TITLE="${PR_TITLE//\"/\\\"}"
+          echo "title=$PR_TITLE" >> "$GITHUB_OUTPUT"
 
       - name: Echo env title
-        run: echo ${{ steps.set_title.title }}
+        run: |
+          printf "%s\n" "${{ steps.set_title.outputs.title }}"
