@@ -18,4 +18,4 @@ jobs:
         run: echo "title=${{ github.event.pull_request.title }}" >> $GITHUB_OUTPUT
 
       - name: Echo env title
-        run: echo ${{ setps.set_title.title }}
+        run: echo ${{ steps.set_title.title }}
