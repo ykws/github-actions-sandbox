@@ -40,3 +40,10 @@ jobs:
             core/**
           run: gh pr edit ${{ github.event.number }} --add-label 'core'
           run-if-not: gh pr edit ${{ github.event.number }} --remove-label 'core'
+      - name: stand
+        uses: yumemi-inc/path-filter@v2
+        with:
+          patterns: |
+            stand/**
+          run: gh pr edit ${{ github.event.number }} --add-label 'stand'
+          run-if-not: gh pr edit ${{ github.event.number }} --remove-label 'stand'
