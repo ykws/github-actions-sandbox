@@ -1,0 +1,40 @@
+name: Basename Dirname
+
+on:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Nested path
+        run: |
+          set -euo pipefail
+
+          path="core/domain/README.md"
+
+          echo "path=${path}"
+          echo "basename=$(basename "${path}")"
+          echo "basename without ext=$(basename "${path}" .md)"
+          echo "dirname=$(dirname "${path}")"
+
+          test -f "${path}"
+          test "$(basename "${path}")" = "README.md"
+          test "$(basename "${path}" .md)" = "README"
+          test "$(dirname "${path}")" = "core/domain"
+
+      - name: Top-level file
+        run: |
+          set -euo pipefail
+
+          path="A.md"
+
+          echo "basename=$(basename "${path}")"
+          echo "dirname=$(dirname "${path}")"
+
+          test -f "${path}"
+          test "$(basename "${path}")" = "A.md"
+          test "$(dirname "${path}")" = "."
